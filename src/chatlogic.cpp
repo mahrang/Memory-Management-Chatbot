@@ -181,13 +181,13 @@ To learn more about lambda functions and what goes in the capture list [], check
 https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp
 https://www.youtube.com/watch?v=58BrFvjNhWY                          */
                     // get iterator on incoming and outgoing node via ID search
-                          auto parentNode = std::find_if(_nodes.begin(), _nodes.end(), [&parentToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(parentToken->second); });
+                            auto parentNode = std::find_if(_nodes.begin(), _nodes.end(), [&parentToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(parentToken->second); });
                             auto childNode = std::find_if(_nodes.begin(), _nodes.end(), [&childToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(childToken->second); });
 
                             // create new edge
                             /* Task 4: all instances of GraphEdge are changed in a way such that each instance of GraphNode exclusively owns the outgoing GraphEdges and holds non-owning references to incoming GraphEdges. Appropriate smart pointers are used to do this. */
                             //GraphEdge *edge = new GraphEdge(id); original code
-                              std::unique_ptr<GraphEdge> edge = std::make_unique<GraphEdge>(id);
+                            std::unique_ptr<GraphEdge> edge = std::make_unique<GraphEdge>(id);
 /* Added .get() below b/c _nodes & edge were made unique pointers in tasks 3-4. Use the .get() function to retrieve a raw pointer to the object.  This will return the address of _chatLogic.  See file "Part 6 - Smart Pointers".
 
 SetChildNode() has the function header SetChildNode(GraphNode *childNode), as shown in line 9 of graphedge.cpp.  That's an example of Passing Variables by Pointer.  To pass a variable to a function that initializes that variable as a pointer, you must pass that variable as a reference.
