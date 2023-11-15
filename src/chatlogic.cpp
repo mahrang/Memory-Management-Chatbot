@@ -179,8 +179,9 @@ If what's written in the {} is true, then parentNode = node.
 _nodes is a list of node. Because parentToken is not in _nodes, you have to pass it as an argument in []. When you pass parentToken as a reference using &, then parentToken can be changed. 
 To learn more about std::find_if(), see https://en.cppreference.com/w/cpp/algorithm/find
 and look at the example given at the bottom where is_even is a lambda function.
-To learn more about lambda functions and what goes in the capture list [], see https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp 
-and https://www.youtube.com/watch?v=58BrFvjNhWY */
+To learn more about lambda functions and what goes in the capture list [], check out these links:
+https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp
+https://www.youtube.com/watch?v=58BrFvjNhWY                          */
                             auto parentNode = std::find_if(_nodes.begin(), _nodes.end(), [&parentToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(parentToken->second); });
                             auto childNode = std::find_if(_nodes.begin(), _nodes.end(), [&childToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(childToken->second); });
 
