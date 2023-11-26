@@ -165,19 +165,19 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
                         if (parentToken != tokens.end() && childToken != tokens.end())
                         {
-/* Task 3:  When passing the GraphNode instances to functions, ownership is not transferred.
-The line below is using std::find_if() to find the parentNode.
-std::find_if() format is
+/* Task 3:  When passing the GraphNode instances to functions, ownership is not transferred. 
+The line below is using std::find_if() to find the parentNode.  
+std::find_if() format is 
 InputIt find_if( InputIt first, InputIt last, UnaryPredicate p );
 where InputIt is class type (or variable type like int).
 find_if returns an iterator to the first element in the range [first, last) that satisfies specific criteria (or the last element if no such iterator is found).
-find_if searches for an element for which predicate p is true.
-In the line below, the predicate p is a lambda function, which is in the format [](){}.  In [], you put the capture list.  In (), you put the parameter list, which are variables you're passing to the function written in the body {}.
-If what's written in the {} is true, then parentNode = node.
-_nodes is a list of node. Because parentToken is not in _nodes, you have to pass it as an argument in []. When you pass parentToken as a reference using &, then parentToken can be changed.
+find_if searches for an element for which predicate p is true. 
+In the line below, the predicate p is a lambda function, which is in the format [](){}.  In [], you put the capture list.  In (), you put the parameter list, which are variables you're passing to the function written in the body {}. 
+If what's written in the {} is true, then parentNode = node. 
+_nodes is a list of node. Because parentToken is not in _nodes, you have to pass it as an argument in []. When you pass parentToken as a reference using &, then parentToken can be changed. 
 To learn more about std::find_if(), see https://en.cppreference.com/w/cpp/algorithm/find
 and look at the example given at the bottom where is_even is a lambda function.
-To learn more about lambda functions and what goes in the capture list [], check out these links:
+To learn more about lambda functions and what goes in the capture list [], see file “Part 1 - Intro & Running Threads” under heading “Lambdas” and check out these links:
 https://learn.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp
 https://www.youtube.com/watch?v=58BrFvjNhWY                          */
                             // get iterator on incoming and outgoing node via ID search
@@ -202,7 +202,7 @@ int main()
     AddThree(&val);
     return 0;
 }
-To learn more about Passing Variables by Pointer, see file "Part 3 - Variables & Memory" under the heading "Passing Variables by Pointer".
+To learn more about Passing Variables by Pointer, see file "Part 3 - Variables & Memory" under the heading "Passing Variables by Pointer". 
 The (*childNode).get() dereferences the held pointer and returns a reference to the object being pointed at.  The .get() gives you the address of childNode, which is the same as doing AddThree(&val) above. See https://stackoverflow.com/questions/62541075/what-is-the-difference-between-smart-ptr-and-smart-ptr-get
 to learn more about using *smart_ptr.get() */
                             edge->SetChildNode((*childNode).get());
