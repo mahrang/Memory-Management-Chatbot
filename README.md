@@ -3,6 +3,12 @@
 
 <img src="images/chatbot_demo.gif"/>
 
+
+
+https://github.com/user-attachments/assets/6750d0ff-fef1-46b5-bcff-51ba6bc34dcf
+
+
+
 The ChatBot code creates a dialogue where users can ask questions about some aspects of memory management in C++. After the knowledge base of the chatbot has been loaded from a text file, a knowledge graph representation is created in computer memory, where chatbot answers represent the graph nodes and user queries represent the graph edges. After a user query has been sent to the chatbot, the Levenshtein distance is used to identify the most probable answer. The code uses smart pointers to represent the knowledge graph and interconnections between objects throughout the project.
 
 The ChatBot program's memory management has been optimized by using smart pointers and move semantics.
