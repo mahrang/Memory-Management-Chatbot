@@ -3,9 +3,9 @@
 
 // need next line for for all the terms that begin with wx
 #include <wx/wx.h>
-#include <memory>  // need this for using std::unique_ptr in Task 1
+#include <memory>  // need this for using std::unique_ptr
 
-/* include the next line so that the compiler knows that ChatLogic in Task 1 refers to a class */
+/* include the next line so that the compiler knows that ChatLogic refers to a class */
 class ChatLogic; // forward declaration
 
 /* ChatBotPanelDialog class is derived from/child class of wxScrolledWindow class.  wxScrolledWindow is the base/parent class. Public means the public and protected members of the base class (wxScrolledWindow) keep their member access in the derived class (ChatBotPanelDialog). */
@@ -17,27 +17,13 @@ private:
     wxBoxSizer *_dialogSizer;
     wxBitmap _image;
 
-// Task 1:  read comment in chatgui.cpp
-    //// STUDENT CODE
-    ////
-
-    //ChatLogic *_chatLogic;  original code
     std::unique_ptr<ChatLogic> _chatLogic;
-    ////
-    //// EOF STUDENT CODE
-
+  
 public:
     // constructor / destructor
     ChatBotPanelDialog(wxWindow *parent, wxWindowID id);
-/* Task 1:  Function below no longer needed because _chatLogic was made a unique pointer. */
-    //~ChatBotPanelDialog();
 
     // getter / setter
-    /* The .get() was added as part of Task 1 because _chatLogic was made a
-       unique pointer.
-       Use the .get() function to retrieve a raw pointer to the object.
-       This will return the address of _chatLogic.
-       See file "Part 6 - Smart Pointers". */
     ChatLogic *GetChatLogicHandle() { return _chatLogic.get(); }
 
     // events
