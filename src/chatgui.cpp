@@ -110,7 +110,7 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     // sizer will take care of determining the needed scroll size
     _dialogSizer = new wxBoxSizer(wxVERTICAL);
 /* SetSizer() is a function in the class wxWindow.  wxScrolledWindow is derived from/child class of wxWindow.  See https://tool.oschina.net/uploads/apidocs/wxwidgets/docs/mshtml/wx/wx_wxscrolledwindow.html
-"this" is a pointer to the object ChatBotPanelDialog.  See comments below in task 1 about the "this" pointer.  As shown in line 13 of chatgui.h, ChatBotPanelDialog is a child class of wxScrolledWindow, which is a child class of wxWindow, so in the line below, a pointer to the object ChatBotPanelDialog (as indicated by "this") is calling the member function SetSizer(). ChatBotPanelDialog inherited the function SetSizer() from the class wxWindow. */
+"this" is a pointer to the object ChatBotPanelDialog.  As shown in chatgui.h, ChatBotPanelDialog is a child class of wxScrolledWindow, which is a child class of wxWindow, so in the line below, a pointer to the object ChatBotPanelDialog (as indicated by "this") is calling the member function SetSizer(). ChatBotPanelDialog inherited the function SetSizer() from the class wxWindow. */
     this->SetSizer(_dialogSizer);
 
     // allow for PNG images to be handled
