@@ -66,57 +66,6 @@ https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/this_pointer.html */
     return *this;
 }
 
-/* In the code below, the move constructor takes as its input an rvalue reference to a source object of the same class. In doing so, we are able to use the object within the scope of the move constructor. As can be seen, the implementation copies the data handle from source to target and immediately invalidates source after copying is complete. The ownership has been successfully changed (or moved) without the need to copy the data on the heap.  The && denontes that source is a rvalue reference.  This means that source holds the address of the object it was passed and that it has exclusive ownership of the object.  The ownership of source changed from the caller function (such as main) to the receiver function below. This is in contrast to a lvalue reference &source, where any change made to source in the receiver function would also be done to source in the caller function.
-In
-i = 1
-j = 2
-k = i + j
-i, j, and k are lvalues
-and 1, 2, and the sum i + j are rvalues.
-You cannot pass a lvalue to a rvalue reference, so you can't do
-void myFunction(int &&val)
-main()
-{
-myFunction(i)
-}
-You can only pass rvalues to a rvalue reference, so you can do
-myFunction(42)
-and
-myFunction(i + j)
-Rvalue references are themselves lvalues.  Within the scope of myFunction, val is a lvalue as it gives access to the memory location where the number 42 is stored.
-If you want to pass a lvalue to a function, then your function should take a lvalue reference as its argument, so you can do
-void myFunction(int &val)
-main()
-{
-myFunction(i)
-}
-If you want to pass a lvalue to a rvalue reference, you have to do
-void myFunction(int &&val)
-main()
-{
-myFunction(std::move(i))
-}
-b/c std::move converts a lvalue into a rvalue.
-You can read more about rvalue reference in file "Part 5 - Resource Copying Policies" under the heading "Rvalue references".
-
-1st example of move constructor used in main:
-MyMovableClass obj2 = MyMovableClass(300);
-Here we have a lvalue obj2, which is created by assigning it an rvalue object.
-
-2nd example of move constructor:
-void useObject(MyMovableClass obj)
-{
-    std::cout << "using object " << &obj << std::endl;
-}
-int main()
-{
-    MyMovableClass obj1(100); // constructor
-    useObject(std::move(obj1));
-    return 0;
-}
-The std::move function accepts an lvalue argument and returns it as an rvalue.  So by passing an object to std::move we can force the compiler to use move semantics, either in the form of move constructor or the move assignment operator.
-You can read more about move constructors in file "Part 5 - Resource Copying Policies" under the heading "The move constructor".
-The move constructor below is invoked in line 252 of chatlogic.cpp, which uses the 2nd example of move constructor shown above.  Line 252 of chatlogic.cpp uses the function in line 42 of graphnode.cpp. */
 // 4: move constructor
 ChatBot::ChatBot(ChatBot &&source){
     std::cout << "ChatBot Move Constructor" << std::endl;
@@ -147,9 +96,6 @@ ChatBot &ChatBot::operator=(ChatBot &&source){
     source._image = nullptr;;
     return *this;
 }
-
-////
-//// EOF STUDENT CODE
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
