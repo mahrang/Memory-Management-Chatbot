@@ -14,18 +14,6 @@
 
 ChatLogic::ChatLogic()
 {
-  //// STUDENT CODE
-    ////
-    /*  Task 5:  ChatLogic has no ownership relation to the ChatBot instance and thus is no longer responsible for memory allocation and deallocation.  Therefore, no need for new/delete in ChatLogic() or ~ChatLogic().
-    
-    // create instance of chatbot
-    _chatBot = new ChatBot("../images/chatbot.png");
-
-    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
-    */
-    ////
-    //// EOF STUDENT CODE
 }
 
 ChatLogic::~ChatLogic()
