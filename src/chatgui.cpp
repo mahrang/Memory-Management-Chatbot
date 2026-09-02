@@ -126,19 +126,6 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
 
 }
 
-/* Task 1:  Function below no longer needed because _chatLogic was made a unique pointer, so no longer need "delete".  Smart pointers don't need new/delete.
-ChatBotPanelDialog::~ChatBotPanelDialog()
-{
-    //// STUDENT CODE
-    ////
-
-    delete _chatLogic;
-
-    ////
-    //// EOF STUDENT CODE
-}
-*/
-
 void ChatBotPanelDialog::AddDialogItem(wxString text, bool isFromUser)
 {
     // add a single dialog element to the sizer
