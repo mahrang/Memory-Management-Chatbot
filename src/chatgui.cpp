@@ -118,33 +118,12 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
 
     _chatLogic = std::make_unique<ChatLogic>();
 
-/* In the next 2 lines, -> is used to access member functions of the managed object, which is the ChatLogic class since _chatLogic is a unique pointer to that class. SetPanelDialogHandle() and LoadAnswerGraphFromFile() are functions in the ChatLogic class.  When a pointer calls a function, you use
-pointer->function().  When an object calls a function, you use object.function().  Example:
-MyClass my_object;
-my_object.function();
-vs pointer:
-// Instantiate a pointer to an object and get its address
-MyClass *pointer_to_my_object;
-pointer_to_my_object = &my_object;
-// call the function
-pointer_to_my_object->function();
-
-See bottom of https://knowledge.udacity.com/questions/556293
-In file "Part 6 - Smart Pointers", search for
-"-> and * operators can be used to access member functions of the managed object" and look at the example below that line.
-  
-"this" is a pointer to the object ChatBotPanelDialog.  In line 48 of chatlogic.h, you see SetPanelDialogHandle(ChatBotPanelDialog *panelDialog), so SetPanelDialogHandle() is passed a pointer of type ChatBotPanelDialog.  panelDialog is a pointer to the object ChatBotPanelDialog.  The "*" indicates that panelDialog is a pointer.  See bottom of Udacity link above about creating a pointer to an object.  "this" is short for "ChatBotPanelDialog *panelDialog", in this case.  "this" points to the address of the object that called the member function. In this case, the object that called the member function SetPanelDialogHandle() is ChatBotPanelDialog b/c the function that called SetPanelDialogHandle() (the function we're in now) is of type ChatBotPanelDialog. SetPanelDialogHandle() is a member function of the class ChatLogic. For more on "this", see:
-https://learn.microsoft.com/en-us/cpp/cpp/this-pointer?view=msvc-170
-https://faculty.cs.niu.edu/~mcmahon/CS241/Notes/this_pointer.html
-https://www.youtube.com/watch?v=Z_hPJ_EhceI   */
     // pass pointer to chatbot dialog so answers can be displayed in GUI
     _chatLogic->SetPanelDialogHandle(this);
 
     // load answer graph from file
     _chatLogic->LoadAnswerGraphFromFile(dataPath + "src/answergraph.txt");
 
-    ////
-    //// EOF STUDENT CODE
 }
 
 /* Task 1:  Function below no longer needed because _chatLogic was made a unique pointer, so no longer need "delete".  Smart pointers don't need new/delete.
