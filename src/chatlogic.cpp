@@ -18,32 +18,6 @@ ChatLogic::ChatLogic()
 
 ChatLogic::~ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-
-    // delete chatbot instance
-//    delete _chatBot;
-
-    /* Task 3:  The GraphNodes in the vector _nodes are exclusively owned by the
-    class ChatLogic.  Since _nodes is a unique pointer in chatlogic.h, you don't
-    need to delete nodes b/c you don't need new/delete with smart pointers.
-    
-    // delete all nodes
-    for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
-    {
-        delete *it;
-    }
-    */
- /*  No need to delete edges because edge was made a unique pointer in function ChatLogic::LoadAnswerGraphFromFile below as part of task 4.
- 
-    // delete all edges
-    for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-        delete *it;
-    }
-*/
-    ////
-    //// EOF STUDENT CODE
 }
 
 template <typename T>
