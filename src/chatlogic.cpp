@@ -121,8 +121,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             auto childNode = std::find_if(_nodes.begin(), _nodes.end(), [&childToken](std::unique_ptr<GraphNode> &node) { return node->GetID() == std::stoi(childToken->second); });
 
                             // create new edge
-                            /* Task 4: all instances of GraphEdge are changed in a way such that each instance of GraphNode exclusively owns the outgoing GraphEdges and holds non-owning references to incoming GraphEdges. Appropriate smart pointers are used to do this. */
-                            //GraphEdge *edge = new GraphEdge(id); original code
                             std::unique_ptr<GraphEdge> edge = std::make_unique<GraphEdge>(id);
 /* Added .get() below b/c _nodes & edge were made unique pointers in tasks 3-4. Use the .get() function to retrieve a raw pointer to the object.  This will return the address of _chatLogic.  See file "Part 6 - Smart Pointers".
 
