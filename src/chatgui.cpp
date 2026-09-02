@@ -116,20 +116,6 @@ ChatBotPanelDialog::ChatBotPanelDialog(wxWindow *parent, wxWindowID id)
     // allow for PNG images to be handled
     wxInitAllImageHandlers();
 
-/* Task 1:  Make _chatLogic an exclusive resource to class ChatBotPanelDialog in chatgui.h using an appropriate smart pointer. */
-    //// STUDENT CODE
-    ////
-
-    // create chat logic instance
-    //_chatLogic = new ChatLogic();  original code
-
-  /* Since a unique pointer is a smart pointer which exclusively owns a dynamically allocated resource on the heap, _chatLogic was made a unique pointer.  The benefit of smart pointers is that you don't need to use new/delete to allocate/deallocate memory to an object.  Creating a smart pointer in a single step removes the risk of a memory leak. Imagine a scenario where an exception happens in the constructor of the resource. In such a case, the object would not be handled properly and its destructor would never be called - even if the managing object goes out of scope. Therefore, make_unique should always be preferred.  The smart pointer destructor contains the call to delete, and because the smart pointer is declared on the stack, its destructor is invoked when the smart pointer goes out of scope, even if an exception is thrown. When a smart pointer goes out of scope, the memory to which it points to is automatically deallocated. Smart pointers help to ensure that programs are free of memory leaks while also remaining exception-safe.
-
-In the line below, an instance of ChatLogic is created by the factory function make_unique() and assigned to a unique pointer instance _chatLogic for management. _chatLogic is a unique pointer to the class ChatLogic.  Read file "Part 6 - Smart Pointers" to read more about unique pointers.
-
-An example of how to make a unique pointer is
-std::unique_ptr<MyClass> uniquePtr = std::make_unique<MyClass>();
-but this line is broken up into 2 parts between chatgui.cpp and chatgui.h. */
     _chatLogic = std::make_unique<ChatLogic>();
 
 /* In the next 2 lines, -> is used to access member functions of the managed object, which is the ChatLogic class since _chatLogic is a unique pointer to that class. SetPanelDialogHandle() and LoadAnswerGraphFromFile() are functions in the ChatLogic class.  When a pointer calls a function, you use
