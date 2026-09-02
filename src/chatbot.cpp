@@ -36,49 +36,12 @@ ChatBot::~ChatBot()
     std::cout << "ChatBot Destructor" << std::endl;
 
     // deallocate heap memory
-    if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
+    if(_image != NULL) 
     {
         delete _image;
         _image = NULL;
     }
 }
-
-//// STUDENT CODE
-////
-/* Task 2:  Class design meets the Rule of Five guidelines.
-   The Rule of Five states that if you have to write one of the functions listed below then you should consider implementing all of them with a proper resource management policy in place.  You can learn more about The Rule of Five in file "Part 5 - Resource Copying Policies".
-The five functions are:
-1.    destructor
-2.    copy constructor
-3.    copy assignment operator
-4.    move constructor
-5.    move assignment operator
-
-Since the destructor is already provided above by ChatBot::~ChatBot(), I wrote the 2nd - 5th functions listed above to adhere to The Rule of Five.  The code below is similar to code in rule_of_five.cpp written in file "Part 5 - Resource Copying Policies".
-
-The & in &source below indicates that this function received a reference to a parameter (see "Passing Variables by Reference" in file "Part 3 - Variables & Memory"), so it can change the value of source directly everywhere source is used. The & denotes that source is a lvalue reference. The & indicates that the address of source was sent to the function so that source can be modified directly.  W/o &, anything that was done to source in this function would only be done to a local copy of source in this function, not to the value of source everywhere it appears in the program.
-Example of passing a variable by reference:
-void AddFour(int &val)
-{
-    val += 4;
-}
-int main()
-{
-    int val = 0;
-    AddFour(val);
-    std::cout << "val = " << val << std::endl;
-    return 0;
-}
-
-Output:
-val = 4
-Any changes made to val in AddFour() will also be done to val in main.
-W/o the & in line 61, output would've been val = 0.
-
-You might have noticed below that both
-2: copy constructor
-3: copy assignment operator
-take a const reference to the source object as an argument, by which they promise that they won’t (and can’t) modify the content of source.  A common usage of const is to guard against accidentally changing a variable, especially when it is passed-by-reference as a function argument, as is the case below.  The compiler will catch a const variable that changes. For more on const, see "Lesson 1 - Foundations" folder, file "Part 2 - A* Search". */
 
 // 2: copy constructor
 ChatBot::ChatBot(const ChatBot &source){
