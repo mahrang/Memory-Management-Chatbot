@@ -48,23 +48,8 @@ ChatBot::ChatBot(const ChatBot &source){
     std::cout << "ChatBot Copy Constructor" << std::endl;
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
-/*  By using new below, we're allocating resource on the heap, just like in line 29.  delete _image is in the destructor in line 41.  For more info on new & delete, see file "Part 4 - Dynamic Memory Allocation" and the "raii_example.cpp" in file "Part 6:  Smart Pointers".
-Why use new/delete instead of malloc/free:
-The functions malloc and free are library functions and represent the default way of allocating and deallocating memory in C. In C++, they are also part of the standard and can be used to allocate blocks of memory on the heap.
-With the introduction of classes and object oriented programming in C++ however, memory allocation and deallocation has become more complex: When an object is created, its constructor needs to be called to allow for member initialization. Also, on object deletion, the destructor is called to free resources and to allow for programmer-defined clean-up tasks. For this reason, C++ introduces the operators new / delete, which represent the object-oriented counterpart to memory management with malloc / free.
-The format for allocating memory using new is
-MyClass *myClass = new MyClass();
-where MyClass() is the constructor.
-The call to new has the following consequences:
-    1.    Memory is allocated to hold a new object of type MyClass
-    2.    A new object of type MyClass is constructed within the allocated memory by calling the constructor of MyClass
-In the line below, _image is a pointer of type/class wxBitmap, as indicated in line 14 of chatbot.h (wxBitmap *_image;).  We're allocating memory to hold a new object (_image) of type wxBitmap.  The line below is the same as
-wxBitmap *_image = new wxBitmap();
-except it's split into 2 lines b/t here and line 14 of chatbot.h. */
     _image = new wxBitmap();
-  // line below means value of _image = value stored in source._image
-    *_image = *source._image;
-// Added next line as stated in https://knowledge.udacity.com/questions/633625
+    *_image = *source._image;  // value of _image = value stored in source._image
     _chatLogic->SetChatbotHandle(this);
 }
 
