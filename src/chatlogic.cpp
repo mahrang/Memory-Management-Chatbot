@@ -12,7 +12,6 @@
 #include "chatbot.h"
 #include "chatlogic.h"
 
-/* When I commented out ChatLogic() & ~ChatLogic(), I got an error b/c of line 130 in chatgui.cpp, so I only commented out the code inside the functions. */
 ChatLogic::ChatLogic()
 {
   //// STUDENT CODE
